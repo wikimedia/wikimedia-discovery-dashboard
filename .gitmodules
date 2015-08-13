@@ -1,0 +1,3 @@
+[submodule "shiny-server/metrics"]
+	path = shiny-server/metrics
+	url = http://github.com/Ironholds/rainbow.git
