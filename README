@@ -1,5 +1,19 @@
-== 
+== Updating the dashboards in this repository
 
+This repository contains only the code that wraps around and
+provisions the dashboards, not the dashboard itself. The dashboards
+are kept as git submodules. To update this repository to point
+at the latest master branch of the metrics dashboard issue the
+following:
+
+$ cd shiny-server/metrics
+$ git pull --ff-only
+$ cd -
+$ git commit -m 'Bump dashboard submodule' shiny-server/metrics
+$ git review
+
+This will create a commit named 'Bump dashboard submodule' and
+push it to gerrit for review.
 
 ==Running in labs
 
