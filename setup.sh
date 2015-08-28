@@ -134,9 +134,6 @@ download_file() {
         $PROJECT_ROOT/files/etc_init.d_shiny-server \
         /etc/init.d/shiny-server
     chmod +x /etc/init.d/shiny-server
-    if which systemctl > /dev/null; then
-      systemctl daemon-reload
-    fi
   fi
 
   if [ "$RESTART_SHINY" -eq 1 ]; then
