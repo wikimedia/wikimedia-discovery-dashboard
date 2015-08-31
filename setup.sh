@@ -76,10 +76,19 @@ download_file() {
     ln -s /vagrant/cache/apt /var/cache/apt/archives
   fi
 
-  if [ "$SKIP_APT_UPDATE" != "1" ]; then
+
+  echo "Installing apt repositories..."
+  install_dist_template \
+      $PROJECT_ROOT/files/etc_apt_sources.list.d_rproject.list \
+      /etc/apt/sources.list.d/rproject.list
+  if [ "$INSTALL_DIST_FILE_STATE" = "installed" ]; then
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+  fi
+  if [ "$INSTALL_DIST_FILE_STATE" = "installed" -o "$SKIP_APT_UPDATE" != "1" ]; then
     echo "Updating APT..."
     apt-get update
   fi
+
   echo "Installing packages..."
   apt-get -y install gfortran libcurl4-openssl-dev git-core gdebi \
       r-base r-base-dev r-cran-reshape2 r-cran-rcolorbrewer
