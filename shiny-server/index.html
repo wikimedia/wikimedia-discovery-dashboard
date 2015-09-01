@@ -1,125 +1,112 @@
 <!DOCTYPE html>
 <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Discovery Dashboards</title>
+  <title>Discovery Dashboards | Engineering | Wikimedia Foundation</title>
   <style type="text/css">
-    body, html {
-      font-family: Helvetica, Arial, sans-serif;
-      background-color: #F5F5F5;
-      color: #114;
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    #titleBar {
-      height: 80px;
-      background-color: #3475b4;
-      overflow: hidden;
-      border-bottom: 1px solid #3475b3;
-      -moz-box-shadow:    0px 0px 10px 3px #BBC;
-      -webkit-box-shadow: 0px 0px 10px 3px #BBC;
-      box-shadow:         0px 0px 10px 3px #BBC;
-    }
-    #titleBar #container {
-      margin-top: 14px;
-    }
-    #titleBar h1 {
-      margin: 0 auto .5em auto;
-      padding: .2em;
-      color: #EEE;
-      text-align: center;
-    }
-    #intro {
-      background-color: #DDD;
-      margin: 1em 1em 0 1em;
-      padding: .75em;
-      text-align: center;
-      border: 1px solid #CCC;
-      font-size: 18px;
-    }
-    #intro p {
-      margin: .3em 0 .3em 0;
-    }
-    #outer-content {
-      max-width: 910px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    #content {
-      margin: 1em auto 1em auto;
-      float: left;
-    }
-    #main{
-      margin-right: 350px;
-      float: left;
-      line-height: 24px;
-    }
-
-    #shiny{
-      float: left;
-      width: 305px;
-      margin-left: -330px;
-      padding-left: 20px;
-      border-left: 1px solid #AAA;
-    }
-    #shiny iframe {
-      margin-top: 30px;
-    }
-    .caption{
-      font-size: 13px;
-      padding-bottom: 25px;
-    }
-    code {
-      background-color: #E5E5E5;
-      border: 1px solid #AAA;
-      -webkit-border-radius: 3px;
-      -khtml-border-radius: 3px; 
-      -moz-border-radius: 3px;
-      border-radius: 3px;
-      padding: 0 .5em 0 .5em;
-    }
+  @import url(https://fonts.googleapis.com/css?family=Overlock:700);
+  body, html {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #F5F5F5;
+    color: #114;
+    margin: 0 0 50px 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+	  color: #006aff;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:visited {
+    color: #3954cb;
+  }
+  #title {
+    height: 120px;
+    background-color: #0055cc;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Overlock', cursive;
+    margin-bottom: -5px;
+  }
+  #title h1 {
+    margin: 0 auto .5em auto;
+    padding-top: 35px;
+    color: white;
+    text-align: center;
+    font-size: 36px;
+  }
+  #content {
+    margin: 1em auto 1em auto;
+    width: 900px;
+  }
+  #info {
+    width: 520px;
+    float: right;
+    padding-right: 30px;
+  }
+  #info p {
+    font-size: 14px;
+    line-height: 20px;
+    text-indent: -10px;
+    padding-left: 10px;
+  }
+  #dashes {
+    float: right;
+    width: 305px;
+    padding-left: 20px;
+    border-left: 1px solid #AAA;
+  }
+  .caption {
+    font-size: 14px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    line-height: 18px;
+  }
   </style>
 </head>
 <body>
-  <div id="titleBar">
-    <div id="container">
-      <h1>Discovery Dashboards</h1>
-    </div>
+
+  <div id="title">
+    <h1>Discovery Dashboards</h1>
   </div>
-  <div id="outer-content">
-    <div id="content">
-      <div id="main">
-        <h2>What is this?</h2>
-        This is a collection of dashboards and tools for exploring Wikimedia search data. It contains everything from API usage to direct user interactions, and will only grow over time. The idea
-        is that this will provide data for internal use and external use, to see how well we're doing.
 
-        <h2>What do I do if I have bug reports, or ideas for future projects?</h2>
-        We're <a href = "https://lists.wikimedia.org/mailman/listinfo/wikimedia-search">always happy to hear new ideas!</a>
-
-        <h2>Who built it and how?</h2>
-        This project was built by <a href = "http://ironholds.org">Oliver Keyes</a> on top of RStudio's <a href = "http://shiny.rstudio.com/">Shiny</a> platform.
+  <div id="content">
+    <div id="dashes">
+        
+      <h2>Dashboards</h2>
+      <h3><a href = "./metrics/">Search Metrics</a></h3>
+      <p class="caption">
+        Summaries and visualizations of metrics of how search features and APIs are being used on Wikimedia sites.
+      </p>
+      <div>
 
       </div>
-      <div id="shiny">
-      <h2>Visualisations</h2>
-        <a href = "./metrics/">Basic Search Metrics</a>
-        <div class="caption">
-          Dashboards providing very basic metrics of how much search features are being used on Wikimedia sites<br/>
-        </div>
-        <div>
+      <h3><a href = "./wdqs/">WDQS Metrics</a></h3>
+      <p class="caption">
+        Summaries and visualizations of very basic metrics of how much the Wikidata Query Service is being used.
+      </p>
 
-        </div>
-        <a href = "./api/">API Metrics</a>
-        <div class="caption">
-          Dashboards providing very basic metrics of how search features are being used through our API.<br/>
-        </div>
-      </div>
     </div>
+    <div id="info">
+        
+      <h2>What is this?</h2>
+      <p>This is a collection of dashboards and tools for exploring aggregated Wikimedia search data. It contains everything from API usage to direct user interactions, and will only grow over time. The idea is that this will provide data for internal use and external use, to see how well we're doing.</p>
+
+      <h2>What do I do if I have bug reports, or ideas for future projects?</h2>
+      <p>We're <a href = "https://lists.wikimedia.org/mailman/listinfo/wikimedia-search">always happy to hear new ideas!</a></p>
+
+      <h2>Who built it and how?</h2>
+      <p>This project was built by <a href="https://meta.wikimedia.org/wiki/User:Okeyes_(WMF)">Oliver Keyes</a> on top of RStudio's <a href = "http://shiny.rstudio.com/">Shiny</a> web application framework for R.</p>
+
+      <h2>Who maintains it?</h2>
+      <p>This project is maintained by <a href="https://meta.wikimedia.org/wiki/User:MPopov_(WMF)">Mikhail Popov</a>.</p>
+        
+      <h2>How do I make one for my team's data?</h2>
+      <p>We wrote an article to help you do that! :D Head over to <em><a href="https://wikitech.wikimedia.org/wiki/Building_a_Shiny_Dashboard">Building a Shiny Dashboard</a></em> on Wikitech.</p>
+        
+    </div>
+    
   </div>
 </body>
 </html>

@@ -1,3 +1,6 @@
 [submodule "shiny-server/metrics"]
 	path = shiny-server/metrics
-	url = http://github.com/Ironholds/rainbow.git
+	url = https://gerrit.wikimedia.org/r/wikimedia/discovery/rainbow.git
+[submodule "shiny-server/wdqs"]
+	path = shiny-server/wdqs
+	url = https://gerrit.wikimedia.org/r/wikimedia/discovery/twilightsparql.git

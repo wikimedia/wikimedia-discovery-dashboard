@@ -46,3 +46,12 @@ $ sudo git pull --ff-only
 $ sudo git submodule update --init --recursive
 $ sudo service shiny-server restart
 
+==Adding dashboards
+
+On your local clone:
+
+$ cd <path to repo>
+$ git submodule add <URL to repo>.git shiny-server/<name>
+$ <git add, commit, etc.>
+$ git review
+

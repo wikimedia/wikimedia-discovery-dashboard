@@ -96,11 +96,18 @@ download_file() {
   echo "Installing R packages..."
   install_r_package curl
   install_r_package markdown
+  install_r_package rmarkdown
   install_r_package shinydashboard
   install_r_package dygraphs
   install_r_package readr
   install_r_package ggplot2
   install_r_package toOrdinal
+  install_r_package dplyr
+  install_r_package tidyr
+  install_r_package knitr
+  install_r_package magrittr
+  install_r_package ggvis
+  install_r_package ggthemes
 
   echo "Installing shiny-server..."
   if [ ! -d /opt/shiny-server ]; then
