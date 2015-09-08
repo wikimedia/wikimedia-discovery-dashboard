@@ -108,6 +108,8 @@ download_file() {
   install_r_package magrittr
   install_r_package ggvis
   install_r_package ggthemes
+  install_r_package plyr
+  install_r_package lubridate
 
   echo "Installing shiny-server..."
   if [ ! -d /opt/shiny-server ]; then
