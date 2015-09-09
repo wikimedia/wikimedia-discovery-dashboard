@@ -138,7 +138,7 @@ download_file() {
     install_dist_template \
         $PROJECT_ROOT/files/etc_init_shiny-server.conf \
         /etc/init/shiny-server.conf
-    initctl reload shiny-server
+    service shiny-server restart
   elif [ -d /etc/systemd/system ]; then
     rm -f /etc/init.d/shiny-server
     install_dist_file \

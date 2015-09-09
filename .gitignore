@@ -2,3 +2,4 @@ cache/
 log/
 .vagrant/
 *.sw?
+provision
