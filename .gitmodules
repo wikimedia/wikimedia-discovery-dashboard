@@ -4,3 +4,6 @@
 [submodule "shiny-server/wdqs"]
 	path = shiny-server/wdqs
 	url = https://gerrit.wikimedia.org/r/wikimedia/discovery/twilightsparql.git
+[submodule "shiny-server/maps"]
+	path = shiny-server/maps
+	url = https://gerrit.wikimedia.org/r/wikimedia/discovery/wetzel
