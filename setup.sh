@@ -37,6 +37,17 @@ install_r_package() {
   fi
 }
 
+# This requires the devtools package so for all that's good and beautiful
+# in the world do not put a call to it in a line before install_r_package devtools.
+git_install_r_package() {
+  local TARGET="/usr/local/lib/R/site-library/$1"
+  if [ ! -d "$TARGET" ]; then
+    /usr/bin/R -e "devtools::install_git('$1')"
+    test -d $TARGET
+    RESTART_SHINY=1
+  fi
+}
+
 install_dist_template() {
   local PROCESSED="/tmp/install_dist_templates.$$"
   envsubst < $1 > $PROCESSED
@@ -91,7 +102,8 @@ download_file() {
 
   echo "Installing packages..."
   apt-get -y install gfortran libcurl4-openssl-dev git-core gdebi \
-      r-base r-base-dev r-cran-reshape2 r-cran-rcolorbrewer
+      r-base r-base-dev r-cran-reshape2 r-cran-rcolorbrewer \
+      libxml2-dev
 
   echo "Installing R packages..."
   install_r_package curl
@@ -110,6 +122,8 @@ download_file() {
   install_r_package ggthemes
   install_r_package plyr
   install_r_package lubridate
+  install_r_package devtools # Needed for installation from Git
+  git_install_r_package https://gerrit.wikimedia.org/r/wikimedia/discovery/polloi
 
   echo "Installing shiny-server..."
   if [ ! -d /opt/shiny-server ]; then
