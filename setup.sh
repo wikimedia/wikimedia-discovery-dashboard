@@ -31,7 +31,7 @@ export LOG_ROOT=$PROJECT_ROOT/log
 install_r_package() {
   local TARGET="/usr/local/lib/R/site-library/$1"
   if [ ! -d "$TARGET" ]; then
-    /usr/bin/R -e "install.packages('$1', repos='http://cran.rstudio.com')"
+    /usr/bin/R -e "install.packages('$1', repos='http://cran.rstudio.com'); q(save = 'no')"
     test -d $TARGET
     RESTART_SHINY=1
   fi
@@ -42,7 +42,7 @@ install_r_package() {
 git_install_r_package() {
   local TARGET="/usr/local/lib/R/site-library/$1"
   if [ ! -d "$TARGET" ]; then
-    /usr/bin/R -e "devtools::install_git('$1')"
+    /usr/bin/R -e "devtools::install_git('$1'); q(save = 'no')"
     test -d $TARGET
     RESTART_SHINY=1
   fi
@@ -101,9 +101,9 @@ download_file() {
   fi
 
   echo "Installing packages..."
-  apt-get -y install gfortran libcurl4-openssl-dev git-core gdebi \
-      r-base r-base-dev r-cran-reshape2 r-cran-rcolorbrewer \
-      libxml2-dev
+  apt-get -y install gfortran libcurl4-openssl-dev libxml2-dev libssh2-1-dev \
+    git-core gdebi r-base r-base-dev r-cran-reshape2 r-cran-rcolorbrewer
+      
 
   echo "Installing R packages..."
   install_r_package curl
@@ -122,7 +122,8 @@ download_file() {
   install_r_package ggthemes
   install_r_package plyr
   install_r_package lubridate
-  install_r_package devtools # Needed for installation from Git
+  install_r_package devtools
+  # ^ Needed for installation from Git
   git_install_r_package https://gerrit.wikimedia.org/r/wikimedia/discovery/polloi
 
   echo "Installing shiny-server..."
