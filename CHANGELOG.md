@@ -1,6 +1,12 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2015/10/07
+- Updated Maps dash to have tile usage data.
+
+## 2015/10/05
+- Search Metrics dash now has user engagement metrics.
+
 ## 2015/09/30
 - Added a change log
 - Added a Contributor Code of Conduct
