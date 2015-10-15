@@ -1,6 +1,9 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2015/10/15
+- Expanded the dashboard index to link to the main Discovery team page
+
 ## 2015/10/07
 - Updated Maps dash to have tile usage data.
 
