@@ -1,8 +1,9 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
-## 2015/10/22
-- Fixed indentation.
+## 2015/10/27
+- Added external referral traffic dashboard
+- Fixed the bug with installing R packages from a git repo
 
 ## 2015/10/15
 - Expanded the dashboard index to link to the main Discovery team page

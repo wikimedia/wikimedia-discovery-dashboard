@@ -31,7 +31,7 @@ export LOG_ROOT=$PROJECT_ROOT/log
 install_r_package() {
   local TARGET="/usr/local/lib/R/site-library/$1"
   if [ ! -d "$TARGET" ]; then
-    /usr/bin/R -e "install.packages('$1', repos='http://cran.rstudio.com'); q(save = 'no')"
+    /usr/bin/R -e "install.packages('$1', repos='https://cran.rstudio.com'); q(save = 'no')"
     test -d $TARGET
     RESTART_SHINY=1
   fi
@@ -40,9 +40,10 @@ install_r_package() {
 # This requires the devtools package so for all that's good and beautiful
 # in the world do not put a call to it in a line before install_r_package devtools.
 git_install_r_package() {
-  local TARGET="/usr/local/lib/R/site-library/$1"
+  local PKG=$(echo $1 | sed 's=.*/\(.*\)$=\1=')
+  local TARGET="/usr/local/lib/R/site-library/${PKG}"
   if [ ! -d "$TARGET" ]; then
-    /usr/bin/R -e "devtools::install_git('$1'); q(save = 'no')"
+    /usr/bin/R -e "devtools::install_git('$1', dependencies = TRUE, lib = '/usr/local/lib/R/site-library'); q(save = 'no')"
     test -d $TARGET
     RESTART_SHINY=1
   fi
@@ -103,7 +104,6 @@ download_file() {
   echo "Installing packages..."
   apt-get -y install gfortran libcurl4-openssl-dev libxml2-dev libssh2-1-dev \
     git-core gdebi r-base r-base-dev r-cran-reshape2 r-cran-rcolorbrewer
-      
 
   echo "Installing R packages..."
   install_r_package curl
@@ -122,6 +122,7 @@ download_file() {
   install_r_package ggthemes
   install_r_package plyr
   install_r_package lubridate
+  install_r_package data.table
   install_r_package devtools
   # ^ Needed for installation from Git
   git_install_r_package https://gerrit.wikimedia.org/r/wikimedia/discovery/polloi

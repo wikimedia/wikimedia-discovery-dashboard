@@ -7,3 +7,6 @@
 [submodule "shiny-server/maps"]
 	path = shiny-server/maps
 	url = https://gerrit.wikimedia.org/r/wikimedia/discovery/wetzel
+[submodule "shiny-server/external"]
+	path = shiny-server/external
+	url = https://gerrit.wikimedia.org/r/wikimedia/discovery/wonderbolt
