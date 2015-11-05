@@ -1,6 +1,10 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2015/11/05
+- Deploying Search Metrics dashboard with time frame selection
+  and updated (fixed) KPI date range functionality.
+
 ## 2015/10/27
 - Added external referral traffic dashboard
 - Fixed the bug with installing R packages from a git repo
