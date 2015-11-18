@@ -1,6 +1,10 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2015/11/18
+- Deploying a new version of each dashboard that includes a notification
+  system for missing data.
+
 ## 2015/11/05
 - Deploying Search Metrics dashboard with time frame selection
   and updated (fixed) KPI date range functionality.
