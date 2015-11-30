@@ -1,6 +1,9 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2015/11/30
+- Deploying a new dashboard for visualizing Portal usage.
+
 ## 2015/11/18
 - Deploying a new version of each dashboard that includes a notification
   system for missing data.

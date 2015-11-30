@@ -10,3 +10,6 @@
 [submodule "shiny-server/external"]
 	path = shiny-server/external
 	url = https://gerrit.wikimedia.org/r/wikimedia/discovery/wonderbolt
+[submodule "shiny-server/portal"]
+	path = shiny-server/portal
+	url = https://gerrit.wikimedia.org/r/wikimedia/discovery/prince
