@@ -1,6 +1,10 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2015/12/14
+- Deploying WDQS dashboard that includes bot filtering for usage data
+- Deploying URL updaters across all dashboards
+
 ## 2015/11/30
 - Deploying a new dashboard for visualizing Portal usage.
 
