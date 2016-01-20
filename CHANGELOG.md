@@ -1,6 +1,13 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2016/01/20
+- Deployed new, more robust Metrics dashboard version
+- Deployed Maps dashboard with new annotations
+
+## 2016/01/19
+- Deployed Portal dashboard that includes geo graphs
+
 ## 2015/12/14
 - Deploying WDQS dashboard that includes bot filtering for usage data
 - Deploying URL updaters across all dashboards
