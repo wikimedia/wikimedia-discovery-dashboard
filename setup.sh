@@ -126,6 +126,7 @@ download_file() {
   install_r_package devtools
   # ^ Needed for installation from Git
   git_install_r_package https://gerrit.wikimedia.org/r/wikimedia/discovery/polloi
+  git_install_r_package https://github.com/aoles/shinyURL.git
 
   echo "Installing shiny-server..."
   if [ ! -d /opt/shiny-server ]; then
