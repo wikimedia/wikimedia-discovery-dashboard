@@ -48,6 +48,15 @@ git_install_r_package() {
     RESTART_SHINY=1
   fi
 }
+github_install_r_package() {
+  local PKG=$(echo $1 | sed 's=.*/\(.*\)$=\1=')
+  local TARGET="/usr/local/lib/R/site-library/${PKG}"
+  if [ ! -d "$TARGET" ]; then
+    /usr/bin/R -e "devtools::install_github('$1', dependencies = TRUE, lib = '/usr/local/lib/R/site-library'); q(save = 'no')"
+    test -d $TARGET
+    RESTART_SHINY=1
+  fi
+}
 
 install_dist_template() {
   local PROCESSED="/tmp/install_dist_templates.$$"
@@ -94,7 +103,7 @@ download_file() {
       $PROJECT_ROOT/files/etc_apt_sources.list.d_rproject.list \
       /etc/apt/sources.list.d/rproject.list
   if [ "$INSTALL_DIST_FILE_STATE" = "installed" ]; then
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+    sudo apt-key adv --keyserver keyserver.ubuntu.com:80 --recv-keys E084DAB9
   fi
   if [ "$INSTALL_DIST_FILE_STATE" = "installed" -o "$SKIP_APT_UPDATE" != "1" ]; then
     echo "Updating APT..."
@@ -124,9 +133,11 @@ download_file() {
   install_r_package lubridate
   install_r_package data.table
   install_r_package devtools
+  install_r_package xml2
+  install_r_package rvest
   # ^ Needed for installation from Git
   git_install_r_package https://gerrit.wikimedia.org/r/wikimedia/discovery/polloi
-  git_install_r_package https://github.com/aoles/shinyURL.git
+  github_install_r_package aoles/shinyURL
 
   echo "Installing shiny-server..."
   if [ ! -d /opt/shiny-server ]; then
