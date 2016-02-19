@@ -1,6 +1,14 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2016/02/19
+- Deployed Portal dashboard ft. browser breakdown and pageviews
+  - Also added sharing settings via URL and smoothing features
+- Deployed Search Metrics dashboard ft. zero results rate breakdown by
+  language and project pairs
+- Deployed Maps dashboard with URL sharing
+- Deployed External Traffic dashboard with fixed bugs
+
 ## 2016/01/20
 - Deployed new, more robust Metrics dashboard version
 - Deployed Maps dashboard with new annotations
