@@ -136,6 +136,7 @@ download_file() {
   install_r_package xml2
   install_r_package rvest
   # ^ Needed for installation from Git
+  git_install_r_package https://gerrit.wikimedia.org/r/wikimedia/discovery/wmf
   git_install_r_package https://gerrit.wikimedia.org/r/wikimedia/discovery/polloi
   github_install_r_package aoles/shinyURL
 

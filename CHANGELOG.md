@@ -1,6 +1,11 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2016/03/04
+- Deployed Maps dashboard with geo breakdown
+- Deployed Portal dashboard with external referral breakdown
+- Added 'wmf' R package to list of installed R packages
+
 ## 2016/02/19
 - Deployed Portal dashboard ft. browser breakdown and pageviews
   - Also added sharing settings via URL and smoothing features
