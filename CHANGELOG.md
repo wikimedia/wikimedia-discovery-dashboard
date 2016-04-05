@@ -1,6 +1,10 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2016/04/05
+- Deployed Portal and External Traffic dashboard versions that are
+  compatible with the new data format. [T130083](https://phabricator.wikimedia.org/T130083)
+
 ## 2016/03/04
 - Deployed Maps dashboard with geo breakdown
 - Deployed Portal dashboard with external referral breakdown
