@@ -1,6 +1,10 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2016/06/23
+- Deployed a new version of Portal dashboard that includes clickthrough rates
+  of first visits only.
+
 ## 2016/04/05
 - Deployed Portal and External Traffic dashboard versions that are
   compatible with the new data format. [T130083](https://phabricator.wikimedia.org/T130083)
