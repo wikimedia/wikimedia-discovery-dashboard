@@ -1,6 +1,14 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2016/08/08
+- Deploying all dashboards with:
+  - Updated event annotation (switch dyAnnotation to dyEvent)
+  - Added dyRangeSelector for easier date range selection, i.e. on touch devices
+  - Added dygraphs-native log-scaling to some of the graphs
+  - Added some annotations
+  - Fixed WDQS dash bug reported in [T141135](https://phabricator.wikimedia.org/T141135)
+
 ## 2016/06/23
 - Deployed a new version of Portal dashboard that includes clickthrough rates
   of first visits only.
