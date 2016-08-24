@@ -1,6 +1,15 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2016/08/24
+- Deployed Portal dashboard with:
+  - Update pageview counting
+  - Add a 'most commonly clicked section per visit' metric
+  - Add clicks by language
+- Fixed bug in mobile app events reported in [T143447](https://phabricator.wikimedia.org/T143447)
+- Fixed display errors on search metrics KPIs dashboard reported in [T143457](https://phabricator.wikimedia.org/T143457)
+- Update product owner for all dashboards
+
 ## 2016/08/08
 - Deploying all dashboards with:
   - Updated event annotation (switch dyAnnotation to dyEvent)
