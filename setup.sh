@@ -31,19 +31,18 @@ export LOG_ROOT=$PROJECT_ROOT/log
 install_r_package() {
   local TARGET="/usr/local/lib/R/site-library/$1"
   if [ ! -d "$TARGET" ]; then
-    /usr/bin/R -e "install.packages('$1', repos='https://cran.rstudio.com'); q(save = 'no')"
+    /usr/bin/R -e "install.packages('$1', repos='https://cran.rstudio.com')"
     test -d $TARGET
     RESTART_SHINY=1
   fi
 }
-
 # This requires the devtools package so for all that's good and beautiful
 # in the world do not put a call to it in a line before install_r_package devtools.
 git_install_r_package() {
   local PKG=$(echo $1 | sed 's=.*/\(.*\)$=\1=')
   local TARGET="/usr/local/lib/R/site-library/${PKG}"
   if [ ! -d "$TARGET" ]; then
-    /usr/bin/R -e "devtools::install_git('$1', dependencies = TRUE, lib = '/usr/local/lib/R/site-library'); q(save = 'no')"
+    /usr/bin/R -e "devtools::install_git('$1', dependencies = TRUE, lib = '/usr/local/lib/R/site-library')"
     test -d $TARGET
     RESTART_SHINY=1
   fi
@@ -56,6 +55,10 @@ github_install_r_package() {
     test -d $TARGET
     RESTART_SHINY=1
   fi
+}
+
+update_r_package() {
+  /usr/bin/R -e "devtools::update_packages('$1')"
 }
 
 install_dist_template() {
@@ -97,60 +100,70 @@ download_file() {
     ln -s /vagrant/cache/apt /var/cache/apt/archives
   fi
 
-
   echo "Installing apt repositories..."
+  apt-get -y install gettext
   install_dist_template \
       $PROJECT_ROOT/files/etc_apt_sources.list.d_rproject.list \
       /etc/apt/sources.list.d/rproject.list
   if [ "$INSTALL_DIST_FILE_STATE" = "installed" ]; then
-    sudo apt-key adv --keyserver keyserver.ubuntu.com:80 --recv-keys E084DAB9
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
   fi
   if [ "$INSTALL_DIST_FILE_STATE" = "installed" -o "$SKIP_APT_UPDATE" != "1" ]; then
     echo "Updating APT..."
     apt-get update
   fi
+  
+  echo "Upgrading installed software packages..."
+  apt-get -y upgrade
 
   echo "Installing packages..."
-  apt-get -y install gfortran libcurl4-openssl-dev libxml2-dev libssh2-1-dev \
-    git-core gdebi r-base r-base-dev r-cran-reshape2 r-cran-rcolorbrewer
+  apt-get -y install gfortran libssl-dev libcurl4-openssl-dev libxml2-dev libssh2-1-dev libcairo2-dev \
+    git-core gdebi r-base r-base-dev r-recommended
 
   echo "Installing R packages..."
-  install_r_package curl
-  install_r_package markdown
-  install_r_package rmarkdown
-  install_r_package shinydashboard
-  install_r_package dygraphs
-  install_r_package readr
-  install_r_package ggplot2
-  install_r_package toOrdinal
-  install_r_package dplyr
-  install_r_package tidyr
-  install_r_package knitr
-  install_r_package magrittr
-  install_r_package ggvis
-  install_r_package ggthemes
-  install_r_package plyr
-  install_r_package lubridate
-  install_r_package data.table
-  install_r_package devtools
+  # Necessities:
+  install_r_package shiny
   install_r_package xml2
   install_r_package rvest
-  install_r_package flexdashboard
+  install_r_package curl
+  install_r_package devtools
   # ^ Needed for installation from Git
+  # Data manipulation packages:
+  install_r_package data.table
+  install_r_package readr
+  install_r_package reshape2
+  install_r_package plyr
+  install_r_package lubridate
+  install_r_package toOrdinal
+  install_r_package magrittr
+  install_r_package tidyverse
+  install_r_package assertthat
+  install_r_package zoo
+  # Data visualization & reporting packages:
+  install_r_package dygraphs
+  install_r_package RColorBrewer
+  install_r_package ggvis
+  install_r_package ggthemes
+  install_r_package DT
+  # Reporting and dashboarding:
+  install_r_package rmarkdown
+  install_r_package knitr
+  install_r_package shinydashboard
+  install_r_package flexdashboard
+  install_r_package shinyjs
+  github_install_r_package jcheng5/googleCharts
   git_install_r_package https://gerrit.wikimedia.org/r/wikimedia/discovery/polloi
-  github_install_r_package aoles/shinyURL
+  
+  echo "Updating installed R packages..."
+  update_r_package polloi
+  update_r_package shiny
+  update_r_package shinydashboard
 
   echo "Installing shiny-server..."
   if [ ! -d /opt/shiny-server ]; then
-    PACKAGE="shiny-server-1.3.0.403-amd64.deb"
+    PACKAGE="shiny-server-1.4.6.809-amd64.deb"
+    # See https://www.rstudio.com/products/shiny/download-server/ for latest version.
     download_file /root $PACKAGE http://download3.rstudio.org/ubuntu-12.04/x86_64
-    # debian jessie doesn't package 0.9.8 anymore. Borrow
-    # a package from older debian squeeze-lts.
-    apt-get -y install libssl0.9.8 || {
-      OPENSSLDEB=libssl0.9.8_0.9.8o-4squeeze21_amd64.deb
-      download_file /root $OPENSSLDEB "http://ftp.debian.org/debian/pool/main/o/openssl"
-      dpkg -i "/root/$OPENSSLDEB"
-    }
     gdebi -n "/root/$PACKAGE"
   fi
 

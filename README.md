@@ -2,23 +2,21 @@
 
 This is a collection of dashboards and tools for exploring aggregated Wikimedia search data. It contains everything from API usage to direct user interactions, and will only grow over time. The idea is that this will provide data for internal use and external use, to see how well we're doing.
 
-## Running in labs
+## Running in Labs
 
-Go to Special:NovaInstance on wikitech and start a new instance. The
-The small instance with 2GB of memory is sufficient. Leave the image
-type at the default of 'debian-8.1-jessie' and click go. Wait for
-the instance to start, then login via ssh.
+Go to Special:NovaInstance on wikitech and start a new instance. The small instance with 2GB of memory is sufficient. Choose the image 'ubuntu-14.04-trusty' and click go. Wait for the instance to start, then login via SSH.
 
-First we need to clone the repository:
+Follow [the instructions for setting up your instance with MediaWiki-Vagrant](https://wikitech.wikimedia.org/wiki/Help:MediaWiki-Vagrant_in_Labs#Setting_up_your_instance_with_MediaWiki-Vagrant). Specifically, add "role::labs::vagrant_lxc" and run `sudo puppet agent --test --verbose`
 
-```
-$ sudo git clone https://gerrit.wikimedia.org/r/wikimedia/discovery/dashboard /srv/dashboards
-```
+Log out and log back in.
 
-Then we need to provision everything:
-
-```
-$ sudo bash /srv/dashboards/setup.sh
+```bash
+sudo git clone https://gerrit.wikimedia.org/r/wikimedia/discovery/dashboard /srv/dashboards
+cd /srv/dashboards
+sudo git submodule update --init --recursive
+sudo vagrant up
+sudo chown -R mwvagrant .vagrant
+vagrant up
 ```
 
 **shiny-server** should now be running on port 3838. To make this
@@ -30,22 +28,20 @@ port.
 
 Perform this step after merging a patch:
 
-```
-$ sudo make update
+```bash
+sudo make update
 ```
 
 ### Manually restarting Shiny Server
 
 ```
-$ mwvagrant ssh
-$ sudo service shiny-server restart
+$> mwvagrant ssh
+ssh> sudo service shiny-server restart
 ```
 
 ## Running on your machine
 
-```
-$ vagrant up
-```
+Download and install [Vagrant](https://www.vagrantup.com/downloads.html) & [VirtualBox](https://www.virtualbox.org/wiki/Downloads). Then clone the repo, initialize the submodules, and `vagrant up`
 
 ## Dashboards as submodules
 
@@ -53,9 +49,9 @@ All of the following is done on your local clone of this repo:
 
 ### Adding
 
-```
-$ git submodule add <URL to repo>.git shiny-server/<name>
-$ git submodule update --init --recursive
+```bash
+git submodule add <URL to repo>.git shiny-server/<name>
+git submodule update --init --recursive
 ```
 
 ### Updating the dashboards in this repository
@@ -65,17 +61,17 @@ provisions the dashboards, not the dashboard itself. The dashboards
 are kept as git submodules. To point the submodules at the latest
 versions, use the following command:
 
-```
-$ git submodule foreach git pull origin master
+```bash
+git submodule foreach git pull origin master
 ```
 
 Please remember to describe the changes in [CHANGELOG.md](CHANGELOG.md), then:
 
-```
-$ git add -A
-$ git commit -m "Updating dashboards..."
-$ git review
-$ <git add -A && git commit --amend && git review>
+```bash
+git add -A
+git commit -m "Updating dashboards..."
+git review
+<git add -A && git commit --amend && git review>
 ```
 
 ## Additional information

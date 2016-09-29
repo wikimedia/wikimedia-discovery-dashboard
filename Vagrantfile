@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.network :forwarded_port, guest: 80, host: 8080
 
   config.vm.network :forwarded_port,
-    guest: 3838, host: 3838, id: 'shiny'
+    guest: 3838, host: 3838, id: 'shiny', host_ip: "0.0.0.0"
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -67,6 +67,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider :lxc do |lxc, override|
     override.vm.box = 'Wikimedia/trusty64-puppet-lxc'
+  end
+  
+  config.vm.provision "fix-no-tty", type: "shell" do |s|
+    s.privileged = false
+    s.inline = "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile"
   end
 
   config.vm.provision "shell", path: "./setup.sh"
