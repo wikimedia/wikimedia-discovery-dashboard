@@ -145,6 +145,8 @@ download_file() {
   install_r_package ggvis
   install_r_package ggthemes
   install_r_package DT
+  install_r_package sparkline
+  install_r_package highcharter
   # Reporting and dashboarding:
   install_r_package rmarkdown
   install_r_package knitr
