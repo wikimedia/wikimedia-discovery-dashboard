@@ -127,6 +127,7 @@ download_file() {
   install_r_package rvest
   install_r_package curl
   install_r_package devtools
+  install_r_package countrycode
   # ^ Needed for installation from Git
   # Data manipulation packages:
   install_r_package data.table
