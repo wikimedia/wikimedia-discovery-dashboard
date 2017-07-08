@@ -1,6 +1,8 @@
 # Discovery Dashboards
 
-This is a collection of dashboards and tools for exploring aggregated Wikimedia search data. It contains everything from API usage to direct user interactions, and will only grow over time. The idea is that this will provide data for internal use and external use, to see how well we're doing.
+**Deprecation Notice**: This repository is no longer in use because we have switched to a [Puppet](https://phabricator.wikimedia.org/source/operations-puppet/)-based solution per [T161354](https://phabricator.wikimedia.org/T161354). In order to maintain a historical record, it has not been deleted. If you are interested in seeing how this repo looks translated into Puppet, see [discovery\_dashboards::base](https://phabricator.wikimedia.org/source/operations-puppet/browse/production/modules/profile/manifests/discovery_dashboards/base.pp), [discovery\_dashboards::production](https://phabricator.wikimedia.org/source/operations-puppet/browse/production/modules/profile/manifests/discovery_dashboards/production.pp), and [shiny\_server module](https://phabricator.wikimedia.org/source/operations-puppet/browse/production/modules/shiny_server/).
+
+This is a collection of dashboards and tools for exploring aggregated Wikimedia Search Platform and Wikimedia Discovery data. It contains everything from API usage to direct user interactions, and will only grow over time. The idea is that this will provide data for internal use and external use, to see how well we're doing.
 
 ## Running in Labs
 
@@ -80,6 +82,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 ### Maintainers
 
+- [Mikhail Popov](https://meta.wikimedia.org/wiki/User:MPopov_(WMF))
+- [Chelsy Xie](https://meta.wikimedia.org/wiki/User:CXie_(WMF))
 - [Erik Bernhardson](https://meta.wikimedia.org/wiki/User:EBernhardson_(WMF))
 - [Oliver Keyes](https://meta.wikimedia.org/wiki/User:Okeyes_(WMF))
-- [Mikhail Popov](https://meta.wikimedia.org/wiki/User:MPopov_(WMF))

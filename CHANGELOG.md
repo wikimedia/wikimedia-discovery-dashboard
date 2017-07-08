@@ -1,6 +1,9 @@
 # Change Log (Patch Notes)
 All notable changes to the *Discovery Dashboards* project will be documented in this file.
 
+## 2017/07/07
+- Deprecation notice per the switch to Puppet ([T161354](https://phabricator.wikimedia.org/T161354))
+
 ## 2016/08/24
 - Deployed Portal dashboard with:
   - Update pageview counting
